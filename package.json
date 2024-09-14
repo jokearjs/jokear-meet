@@ -1,6 +1,6 @@
 {
   "name": "jokear-meet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "domutala",
   "type": "module",
@@ -8,11 +8,13 @@
   "homepage": "https://github.com/jokearjs/jokear-meet#readme",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
-  "types": "dist/bundle.d.ts",
+  "types": "dist/index.d.ts",
   "keywords": [
     "jokear",
     "meet",
-    "video call"
+    "webrt",
+    "cortc",
+    "sfu"
   ],
   "scripts": {
     "build": "tsc && rollup -c --bundleConfigAsCjs"
@@ -21,13 +23,13 @@
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@types/node": "^22.5.5",
     "@types/socket.io": "^3.0.2",
     "rollup": "^4.21.3",
     "rollup-plugin-typescript2": "^0.36.0",
-    "typescript": "^5.6.2",
-    "@types/node": "^22.5.5"
+    "typescript": "^5.6.2"
   },
   "dependencies": {
-    "mediasoup": "3"
+    "mediasoup": "^3.14.14"
   }
 }

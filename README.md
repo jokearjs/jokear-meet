@@ -1,19 +1,21 @@
-# jokear-meet-server
+# jokear-meet
+
+jokear-meet is a solution designed to deploy large-scale video conferencing systems. Based on WebRTC for real-time communication, it handles video calls, audio, and screen sharing. Optimized for scalability, this solution easily integrates into complex infrastructures, providing a robust and secure foundation for high-performance teleconferencing applications.
 
 ## install
 
 ```shell
 # npm
-npm install jokear-meet-server
+npm install jokear-meet
 
 # yarn
-yarn add jokear-meet-server
+yarn add jokear-meet
 ```
 
-## useage
+## usage
 
 ```javascript
-import { JokearMeet } from "jokear-meet-server";
+import { JokearMeet } from "jokear-meet";
 
 const jockearMeet = new JokearMeet(server);
 await jockearMeet.initialized();

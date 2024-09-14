@@ -552,7 +552,7 @@ make-dir@^3.0.2:
   dependencies:
     semver "^6.0.0"
 
-mediasoup@3:
+mediasoup@^3.14.14:
   version "3.14.14"
   resolved "https://registry.yarnpkg.com/mediasoup/-/mediasoup-3.14.14.tgz#88f8de1dc04d726e85990381dbb52cacaf46f38a"
   integrity sha512-BagHzOgtPUPxpPAHSMdFKICjtDuLNHznuk3YUUDDTFIwyTOYIXeX7NRklzMRAiRRKA9luXmjCjTNwkMQ4sb0aA==

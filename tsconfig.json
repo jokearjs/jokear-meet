@@ -1,19 +1,16 @@
 {
-    "compilerOptions": {
-        "target": "ESNext",
-        "module": "ESNext",
-        "moduleResolution": "node",
-        "outDir": "./dist",
-        "declaration": true,
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "importHelpers": true
-    },
-    "include": [
-        "src"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "declaration": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "declarationMap": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

@@ -4,3 +4,4 @@ demos
 dist/*.d.ts.map
 docs
 test
+.github

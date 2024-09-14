@@ -3,7 +3,6 @@
   "version": "0.1.1",
   "license": "MIT",
   "author": "domutala",
-  "type": "module",
   "repository": "https://github.com/jokearjs/jokear-meet",
   "homepage": "https://github.com/jokearjs/jokear-meet#readme",
   "main": "dist/index.cjs.js",

@@ -12,7 +12,8 @@
     "meet",
     "webrt",
     "cortc",
-    "sfu"
+    "sfu",
+    "mediasoup"
   ],
   "scripts": {
     "build": "npx tsc"

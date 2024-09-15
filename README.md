@@ -6,10 +6,10 @@ jokear-meet is a solution designed to deploy large-scale video conferencing syst
 
 ```shell
 # npm
-npm install jokear-meet
+npm install mediasoup@3 jokear-meet
 
 # yarn
-yarn add jokear-meet
+yarn add mediasoup@3 jokear-meet
 ```
 
 ## usage

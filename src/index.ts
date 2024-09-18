@@ -138,6 +138,7 @@ export class JokearMeet {
       "consumer-resume": "consumerResume",
       "producer-switch": "producerSwitch",
       disconnect: "onDisconnect",
+      "quit-meet": "quitMeet",
     };
 
     this.server.on("connection", (socket: Socket) => {
@@ -145,12 +146,24 @@ export class JokearMeet {
         const fnName: string = fns[event as "joinRoom"];
         socket.on(event, async (data, callback) => {
           const result = await this[fnName as "joinRoom"](socket, data);
-          if (callback) callback(result);
+          if (typeof callback === "function") callback(result);
 
           return result;
         });
       }
     });
+  }
+
+  quitMeet(socket: Socket) {
+    const peer = this.peers[socket.id];
+    this.onDisconnect(socket);
+
+    if (peer) {
+      const { peerDetails, roomName } = peer;
+      if (peerDetails.isAdmin) socket.broadcast.to(roomName).emit("end-meet");
+    }
+
+    return {};
   }
 
   onDisconnect(socket: Socket) {
@@ -187,12 +200,12 @@ export class JokearMeet {
 
       this.rooms[roomName].peers = peers;
     }
+
+    return {};
   }
 
   async joinRoom(socket: Socket, data: any) {
-    let roomName = data.roomName;
-    if (!roomName) roomName = Math.random().toString(22).substring(2);
-
+    const roomName = data.roomName;
     socket.join(roomName);
 
     const router1 = await this.createRoom(roomName, socket.id);
@@ -250,8 +263,6 @@ export class JokearMeet {
       const { volume } = volumes[0];
       const { peerDetails } = this.peers[socketId];
 
-      // this.rooms[roomName].peers;
-
       this.server.to(roomName).emit("speaking", {
         peerDetails,
         volume: volume,
@@ -262,7 +273,6 @@ export class JokearMeet {
       this.server.to(roomName).emit("silence");
     });
 
-    // console.log(`Router ID: ${router1.id}`, peers.length);
     this.rooms[roomName] = {
       router: router1,
       peers: [...peers, socketId],
@@ -585,7 +595,10 @@ export class JokearMeet {
   }
 
   async producerSwitch(socket: Socket, data: any) {
-    const { roomName, peerDetails } = this.peers[socket.id];
+    const peer = this.peers[socket.id];
+    if (!peer) throw "peer not found";
+
+    const { roomName, peerDetails } = peer;
 
     const { producer } = this.producers.filter(
       (producer) => producer.producer.id === data.producerId
